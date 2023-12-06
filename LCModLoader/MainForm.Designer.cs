@@ -245,8 +245,9 @@
             // openExplorerToolStripMenuItem
             // 
             this.openExplorerToolStripMenuItem.Name = "openExplorerToolStripMenuItem";
-            this.openExplorerToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.openExplorerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openExplorerToolStripMenuItem.Text = "Open Explorer";
+            this.openExplorerToolStripMenuItem.Click += new System.EventHandler(this.openExplorerToolStripMenuItem_Click);
             // 
             // addModToolStripMenuItem
             // 
@@ -282,12 +283,14 @@
             this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
             this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.preferencesToolStripMenuItem.Text = "Preferences";
+            this.preferencesToolStripMenuItem.Click += new System.EventHandler(this.preferencesToolStripMenuItem_Click);
             // 
             // profileListToolStripMenuItem
             // 
             this.profileListToolStripMenuItem.Name = "profileListToolStripMenuItem";
             this.profileListToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.profileListToolStripMenuItem.Text = "Profile List";
+            this.profileListToolStripMenuItem.Click += new System.EventHandler(this.profileListToolStripMenuItem_Click);
             // 
             // infoToolStripMenuItem
             // 
@@ -302,14 +305,16 @@
             // githubRepoToolStripMenuItem
             // 
             this.githubRepoToolStripMenuItem.Name = "githubRepoToolStripMenuItem";
-            this.githubRepoToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.githubRepoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.githubRepoToolStripMenuItem.Text = "Github Repo";
+            this.githubRepoToolStripMenuItem.Click += new System.EventHandler(this.githubRepoToolStripMenuItem_Click);
             // 
             // submitBugsToolStripMenuItem
             // 
             this.submitBugsToolStripMenuItem.Name = "submitBugsToolStripMenuItem";
-            this.submitBugsToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.submitBugsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.submitBugsToolStripMenuItem.Text = "Submit Bugs";
+            this.submitBugsToolStripMenuItem.Click += new System.EventHandler(this.submitBugsToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -413,6 +418,7 @@
             this.Controls.Add(this.ModListSaveBtn);
             this.Controls.Add(this.SavePlayBtn);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(320, 600);
             this.Name = "MainForm";
