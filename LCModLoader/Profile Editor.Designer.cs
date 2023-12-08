@@ -38,15 +38,17 @@
             label1 = new System.Windows.Forms.Label();
             BtnLoadProfile = new System.Windows.Forms.Button();
             BtnClose = new System.Windows.Forms.Button();
+            button1 = new System.Windows.Forms.Button();
             SuspendLayout();
             // 
             // ProfileList
             // 
+            ProfileList.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             ProfileList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { ProfileName, ActiveModCount });
             ProfileList.Location = new System.Drawing.Point(14, 42);
             ProfileList.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             ProfileList.Name = "ProfileList";
-            ProfileList.Size = new System.Drawing.Size(326, 142);
+            ProfileList.Size = new System.Drawing.Size(328, 142);
             ProfileList.TabIndex = 0;
             ProfileList.UseCompatibleStateImageBehavior = false;
             ProfileList.View = System.Windows.Forms.View.Details;
@@ -59,12 +61,13 @@
             // 
             // ActiveModCount
             // 
-            ActiveModCount.Text = "Active Mod Count";
+            ActiveModCount.Text = "Active Mods";
             ActiveModCount.Width = 98;
             // 
             // BtnNewProfile
             // 
-            BtnNewProfile.Location = new System.Drawing.Point(253, 192);
+            BtnNewProfile.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            BtnNewProfile.Location = new System.Drawing.Point(254, 192);
             BtnNewProfile.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             BtnNewProfile.Name = "BtnNewProfile";
             BtnNewProfile.Size = new System.Drawing.Size(88, 27);
@@ -75,7 +78,8 @@
             // 
             // BTNDelete
             // 
-            BTNDelete.Location = new System.Drawing.Point(253, 258);
+            BTNDelete.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            BTNDelete.Location = new System.Drawing.Point(254, 258);
             BTNDelete.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             BTNDelete.Name = "BTNDelete";
             BTNDelete.Size = new System.Drawing.Size(88, 27);
@@ -86,7 +90,8 @@
             // 
             // BtnClearProfile
             // 
-            BtnClearProfile.Location = new System.Drawing.Point(253, 225);
+            BtnClearProfile.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            BtnClearProfile.Location = new System.Drawing.Point(254, 225);
             BtnClearProfile.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             BtnClearProfile.Name = "BtnClearProfile";
             BtnClearProfile.Size = new System.Drawing.Size(88, 27);
@@ -108,6 +113,7 @@
             // 
             // BtnLoadProfile
             // 
+            BtnLoadProfile.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
             BtnLoadProfile.Location = new System.Drawing.Point(14, 192);
             BtnLoadProfile.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             BtnLoadProfile.Name = "BtnLoadProfile";
@@ -119,6 +125,7 @@
             // 
             // BtnClose
             // 
+            BtnClose.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
             BtnClose.Location = new System.Drawing.Point(14, 258);
             BtnClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             BtnClose.Name = "BtnClose";
@@ -128,11 +135,23 @@
             BtnClose.UseVisualStyleBackColor = true;
             BtnClose.Click += BtnClose_Click;
             // 
+            // button1
+            // 
+            button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            button1.Location = new System.Drawing.Point(136, 192);
+            button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(88, 27);
+            button1.TabIndex = 7;
+            button1.Text = "Export Profile";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // Profile_Editor
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(355, 292);
+            Controls.Add(button1);
             Controls.Add(BtnClose);
             Controls.Add(BtnLoadProfile);
             Controls.Add(label1);
@@ -161,5 +180,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BtnLoadProfile;
         private System.Windows.Forms.Button BtnClose;
+        private System.Windows.Forms.Button button1;
     }
 }

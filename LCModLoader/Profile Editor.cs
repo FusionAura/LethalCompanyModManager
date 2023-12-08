@@ -12,10 +12,36 @@ namespace LCModLoader
 {
     public partial class Profile_Editor : Form
     {
-        public Profile_Editor()
+        private Settings _settings;
+        private Profile _currentProfile;
+        public Profile_Editor(Settings settings, Profile currentProfile)
         {
             InitializeComponent();
+            UpdateSettings(settings, currentProfile);
+
+            foreach (Profile a in _settings.ProfileList.ToList())
+            {
+                ProfileList.Items.Add(new ListViewItem(new string[] { a.ProfileName, a.ModCountActive.ToString() }));
+            }
         }
+        public void UpdateSettings(Settings settings, Profile currentProfile)
+        {
+            _settings = settings;
+            _currentProfile = currentProfile;
+        }
+        private void CreateProfile(string Name)
+        {
+            //Create Default Profile
+            Profile newProfile = new();
+            newProfile.ProfileName = Name;
+            newProfile.ActiveModList = new();
+
+            _settings.ProfileList.Add(newProfile);
+            //Set Current Profile
+            _currentProfile = _settings.ProfileList[_settings.ProfileList.Count-1];
+            ProfileList.Items.Add(new ListViewItem(new string[] { _currentProfile.ProfileName, _currentProfile.ModCountActive.ToString() }));
+        }
+
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -24,7 +50,34 @@ namespace LCModLoader
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //TODO: Empty Active Mod List
 
+            bool dupe = false;
+            while (true)
+            {
+                //TODO: Create New Profile
+                string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Please enter a profile name.", "Enter a Profile Name", "New Profile");
+                if (UserAnswer.Length == 0)
+                    return;
+
+                foreach (Profile a in _settings.ProfileList)
+                {
+                    if (a.ProfileName == (UserAnswer))
+                    {
+                        //TODO:Check to see if name is used already.
+                        var message = "This profile name is already in use. Enter a new name.";
+                        var title = "Profile Name exists";
+                        MessageBox.Show(message, title);
+                        dupe = true;
+                    }
+                }
+                if (!dupe)
+                {
+                    CreateProfile(UserAnswer);
+                    return;
+                }
+                dupe = false;
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -39,7 +92,7 @@ namespace LCModLoader
 
         private void BtnClose_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
 
         private void Profile_Editor_Load(object sender, EventArgs e)

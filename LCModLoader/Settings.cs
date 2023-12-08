@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 namespace LCModLoader
 {
@@ -9,6 +8,7 @@ namespace LCModLoader
         public string GameDir { get; set; }
         public string ModDir { get; set; }
         public string ProfileDir { get; set; }
+        public Profile CurrentProfile { get; set; }
         public BindingList<Profile> ProfileList { get; set; }
     }
 }

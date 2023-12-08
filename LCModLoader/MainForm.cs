@@ -8,6 +8,7 @@ using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace LCModLoader;
 
@@ -15,69 +16,79 @@ public partial class MainForm : Form
 {
     private About _aboutApp = new();
     private Settings _settings = new();
-    private Profile_Editor _profileEditor = new();
+    private Profile_Editor _profileEditor;
     private List<ModFile> _modList = new();
-    private Profile _currentProfile;
-    private string _gameExe = "";
-    private string _gameDir = "";
-    private string _modDir = "";
-    private string _profileDir = "";
 
 
     public MainForm()
     {
         InitializeComponent();
         //TODO: Check for existing config file
-        var path = "Config.json";
-
+        var path = "Config.xml";
+        
         if (!File.Exists(path))
         {
             var message = "Missing Config can be found, creating a new one.";
             var title = "No Config File";
             MessageBox.Show(message, title);
+            
             FirstTimeBoot();
         }
-        GetConfigSettings();
+        //GetConfigSettings();
+        
+
     }
 
-    private void GetConfigSettings()
+    private void CreateConfigFile()
     {
-
-        //TODO: Open Config file and copy list data to appropriate mod lists
-        _gameExe = _settings.GameExe;
-        _gameDir = _settings.GameDir;
-        _modDir = _settings.ModDir;
-        _profileDir = _settings.ProfileDir;
+        XmlWriterSettings settings = new XmlWriterSettings();
+        settings.Indent = true;
+        settings.IndentChars = ("    ");
+        using (XmlWriter writer = XmlWriter.Create("Config.xml", settings))
+        {
+            writer.WriteStartElement("Settings");
+            writer.WriteElementString("GameExecutable", _settings.GameExe);
+            writer.WriteElementString("GameDirectory", _settings.GameDir);
+            writer.WriteElementString("ModFolder", _settings.ModDir);
+            writer.WriteElementString("CurrentProfile", _settings.CurrentProfile.ProfileName.ToString());
+            writer.WriteElementString("ProfileFolder", _settings.ProfileDir);
+            writer.WriteEndElement();
+            writer.Flush();
+        }
     }
 
     private void FirstTimeBoot()
     {
-        Directory.CreateDirectory("Mods");
-        Directory.CreateDirectory("Profiles");
-
+        
         //TODO: If no config file exists, Create Config file.
         var game = "Lethal Company.exe";
         var message = "The Mod Manager is not in the same folder as Lethal Company. Please select the location of the game.";
         var title = "Lethal Company Not Found";
         MessageBox.Show(message, title);
+        //TODO: Check to see if in the game's directory. If game can't be found, prompt user to select game directory
         if (File.Exists(game))
-            _gameDir = Directory.GetCurrentDirectory();
+        { 
+            _settings.GameDir = Directory.GetCurrentDirectory();
+            //TODO: If Game is found, check to see if BepInEx is installed
+
+            //TODO: If BepInEx is not installed, Display prompt that it is missing.
+
+        }
         else
             FindGameDir(game);
 
         //TODO: Check if existing profiles exist
+
 
         //TODO: If not, establish profile list
         _settings.ProfileList = new();
         CreateProfile("Default");
 
 
-
-        //TODO: Check to see if in the game's directory. If game can't be found, prompt user to select game directory
-        //TODO: If Game is found, check to see if BepInEx is installed
-        //TODO: If BepInEx is not installed, Display prompt that it is missing.
-
-
+        
+        
+        _profileEditor = new(_settings, _settings.CurrentProfile);
+        CreateConfigFile();
     }
 
     private void CreateProfile(string Name)
@@ -96,7 +107,27 @@ public partial class MainForm : Form
 
 
         //Set Current Profile
-        _currentProfile = (Profile)ProfileList.Items[0];
+        _settings.CurrentProfile = (Profile)ProfileList.Items[0];
+        SaveProfileToXML(_settings.CurrentProfile);
+    }
+
+    private void SaveProfileToXML(Profile newProfile)
+    {
+        //TODO: Notify if mod is missing
+        XmlWriterSettings settings = new XmlWriterSettings();
+        settings.Indent = true;
+        settings.IndentChars = ("    ");
+
+        using (XmlWriter writer = XmlWriter.Create(_settings.ProfileDir+@"/"+newProfile.ProfileName+".xml", settings))
+        {
+            writer.WriteStartElement("Profile");
+            writer.WriteElementString("ProfileName", newProfile.ProfileName);
+            writer.WriteStartElement("ActiveMods");
+            foreach (ModFile a in newProfile.ActiveModList)
+                writer.WriteElementString(a.ModName, a.ModFileDir);
+            writer.WriteEndElement();
+            writer.Flush();
+        }
     }
 
     private void FindGameDir(string game)
@@ -112,7 +143,9 @@ public partial class MainForm : Form
         folderBrowser.FileName = game;
 
 
-        while (_gameDir == "")
+        
+
+        while (_settings.GameDir == null)
         {
             if (folderBrowser.ShowDialog() == DialogResult.OK)
             {
@@ -120,13 +153,6 @@ public partial class MainForm : Form
                 {
                     _settings.GameExe = Path.GetDirectoryName(folderBrowser.FileName) + @"\" + Path.GetFileName(folderBrowser.FileName);
                     _settings.GameDir = Path.GetDirectoryName(folderBrowser.FileName);
-                    _settings.ModDir = Directory.GetCurrentDirectory() + @"/Mods";
-                    _settings.ProfileDir = Directory.GetCurrentDirectory() + @"/Profiles";
-
-                    _gameExe = _settings.GameExe;
-                    _gameDir = _settings.GameDir;
-                    _modDir = _settings.ModDir;
-                    _profileDir = _settings.ProfileDir;
                 }
                 else
                     CanNotFindGame(game);
@@ -137,6 +163,12 @@ public partial class MainForm : Form
 
         }
 
+
+        string dir = Path.GetDirectoryName(folderBrowser.FileName);
+        Directory.CreateDirectory(dir + @"/Mods");
+        Directory.CreateDirectory(dir + @"/Profiles");
+        _settings.ModDir = Path.GetDirectoryName(folderBrowser.FileName) + @"/Mods";
+        _settings.ProfileDir = Path.GetDirectoryName(folderBrowser.FileName) + @"/Profiles";
     }
 
     void CanNotFindGame(string game)
@@ -147,9 +179,7 @@ public partial class MainForm : Form
         if (dialogResult == DialogResult.Yes)
             FindGameDir(game);
         else if (dialogResult == DialogResult.No)
-            _gameDir = "Error";
-
-
+            _settings.GameDir = "Error";
     }
 
     private void LoadProfile()
@@ -161,7 +191,8 @@ public partial class MainForm : Form
 
     private void Form1_Load(object sender, EventArgs e)
     {
-        if (_gameDir == "Error")
+        
+        if (_settings.GameDir == "Error")
             Application.Exit();
     }
 
@@ -208,6 +239,7 @@ public partial class MainForm : Form
     private void button2_Click(object sender, EventArgs e)
     {
         _profileEditor.ShowDialog();
+        _profileEditor.UpdateSettings(_settings, _settings.CurrentProfile);
         _profileEditor.StartPosition = FormStartPosition.CenterParent;
     }
 
@@ -274,7 +306,7 @@ public partial class MainForm : Form
 
     private void openExplorerToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        if (_gameDir == "")
+        if (_settings.GameDir == "")
         {
             var message = "Lethal Company directory hasn't been set";
             var title = "Error";
@@ -283,7 +315,7 @@ public partial class MainForm : Form
         }
 
         //@"c:\"
-        Process.Start("explorer.exe", _gameDir);
+        Process.Start("explorer.exe", _settings.GameDir);
     }
 
     private void quitToolStripMenuItem_Click(object sender, EventArgs e)
