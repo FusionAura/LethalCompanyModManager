@@ -1,24 +1,20 @@
-﻿using System;
+﻿
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Xml;
 
 namespace LCModLoader;
-
+[System.Runtime.Versioning.SupportedOSPlatform("windows")]
 public partial class MainForm : Form
 {
     private About _aboutApp = new();
     private Settings _settings = new();
     private Profile_Editor _profileEditor;
     private List<ModFile> _modList = new();
-
 
     public MainForm()
     {
@@ -34,9 +30,6 @@ public partial class MainForm : Form
             
             FirstTimeBoot();
         }
-        //GetConfigSettings();
-        
-
     }
 
     private void CreateConfigFile()
@@ -50,12 +43,49 @@ public partial class MainForm : Form
             writer.WriteElementString("GameExecutable", _settings.GameExe);
             writer.WriteElementString("GameDirectory", _settings.GameDir);
             writer.WriteElementString("ModFolder", _settings.ModDir);
-            writer.WriteElementString("CurrentProfile", _settings.CurrentProfile.ProfileName.ToString());
+            writer.WriteElementString("CurrentProfile", _settings.CurrentProfile.ProfileName);
             writer.WriteElementString("ProfileFolder", _settings.ProfileDir);
             writer.WriteEndElement();
             writer.Flush();
         }
     }
+
+    //TODO: Load config file
+    private void LoadConfigFile()
+    {
+
+        XmlTextReader textReader = new XmlTextReader("Config.xml");
+        textReader.Read();
+        // If the node has value  
+        while (textReader.Read())
+        {
+            textReader.MoveToElement();
+            _settings.GameExe = textReader.Value;
+            _settings.GameDir = textReader.Value;
+            _settings.ModDir = textReader.Value;
+            _settings.ProfileDir = textReader.Value;
+            
+            //_settings.CurrentProfile = profile
+        }
+
+
+
+
+        XmlWriterSettings settings = new XmlWriterSettings();
+        settings.Indent = true;
+        settings.IndentChars = ("    ");
+        using (XmlWriter writer = XmlWriter.Create("Config.xml", settings))
+        {
+            writer.WriteElementString("GameExecutable", _settings.GameExe);
+            writer.WriteElementString("GameDirectory", _settings.GameDir);
+            writer.WriteElementString("ModFolder", _settings.ModDir);
+            writer.WriteElementString("CurrentProfile", _settings.CurrentProfile.ProfileName);
+            writer.WriteElementString("ProfileFolder", _settings.ProfileDir);
+            writer.WriteEndElement();
+            writer.Flush();
+        }
+    }
+
 
     private void FirstTimeBoot()
     {
@@ -111,6 +141,23 @@ public partial class MainForm : Form
         SaveProfileToXML(_settings.CurrentProfile);
     }
 
+    private void LoadProfileFile()
+    {
+
+        XmlTextReader textReader = new XmlTextReader(_settings.CurrentProfile.ProfileName + ".xml");
+        textReader.Read();
+        // If the node has value  
+        while (textReader.Read())
+        {
+            textReader.MoveToElement();
+            _settings.CurrentProfile.ProfileName = textReader.Value;
+            //_settings.GameDir = textReader.Value;
+
+
+            //_settings.CurrentProfile = profile
+        }
+    }
+
     private void SaveProfileToXML(Profile newProfile)
     {
         //TODO: Notify if mod is missing
@@ -141,9 +188,6 @@ public partial class MainForm : Form
         folderBrowser.CheckPathExists = true;
         // Always default to Folder Selection.
         folderBrowser.FileName = game;
-
-
-        
 
         while (_settings.GameDir == null)
         {
@@ -232,10 +276,6 @@ public partial class MainForm : Form
         //TODO: Check
     }
 
-    private void modDescription_Enter(object sender, EventArgs e)
-    {
-    }
-
     private void button2_Click(object sender, EventArgs e)
     {
         _profileEditor.ShowDialog();
@@ -269,12 +309,17 @@ public partial class MainForm : Form
             if (!dupe) 
             { 
                 CreateProfile(UserAnswer);
+                _profileEditor.UpdateSettings(_settings, _settings.CurrentProfile);
                 return;
             }
             dupe = false;
         }
     }
 
+
+    private void modDescription_Enter(object sender, EventArgs e)
+    {
+    }
 
     private void githubRepoToolStripMenuItem_Click(object sender, EventArgs e)
     {

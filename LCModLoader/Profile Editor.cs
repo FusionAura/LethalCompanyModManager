@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace LCModLoader
 {
+    [System.Runtime.Versioning.SupportedOSPlatform("windows")]
     public partial class Profile_Editor : Form
     {
         private Settings _settings;
@@ -18,16 +19,15 @@ namespace LCModLoader
         {
             InitializeComponent();
             UpdateSettings(settings, currentProfile);
-
-            foreach (Profile a in _settings.ProfileList.ToList())
-            {
-                ProfileList.Items.Add(new ListViewItem(new string[] { a.ProfileName, a.ModCountActive.ToString() }));
-            }
         }
         public void UpdateSettings(Settings settings, Profile currentProfile)
         {
             _settings = settings;
             _currentProfile = currentProfile;
+            foreach (Profile a in _settings.ProfileList.ToList())
+            {
+                ProfileList.Items.Add(new ListViewItem(new string[] { a.ProfileName, a.ModCountActive.ToString() }));
+            }
         }
         private void CreateProfile(string Name)
         {
