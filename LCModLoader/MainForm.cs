@@ -214,9 +214,9 @@ public partial class MainForm : Form
     private void BtnNewProfile_Click(object sender, EventArgs e)
     {
         //TODO: Empty Active Mod List
-        bool result = false;
 
-        while (!result)
+        bool dupe = false;
+        while (true)
         {
             //TODO: Create New Profile
             string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Please enter a profile name.", "Enter a Profile Name", "New Profile");
@@ -231,14 +231,15 @@ public partial class MainForm : Form
                     var message = "This profile name is already in use. Enter a new name.";
                     var title = "Profile Name exists";
                     MessageBox.Show(message, title);
+                    dupe = true;
                 }
-                else
-                { 
-                    CreateProfile(UserAnswer);
-                    return;
-                }
-                
             }
+            if (!dupe) 
+            { 
+                CreateProfile(UserAnswer);
+                return;
+            }
+            dupe = false;
         }
     }
 
