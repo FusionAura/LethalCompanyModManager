@@ -46,5 +46,10 @@ namespace LCModLoader
         {
 
         }
+
+        private void ProfileList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

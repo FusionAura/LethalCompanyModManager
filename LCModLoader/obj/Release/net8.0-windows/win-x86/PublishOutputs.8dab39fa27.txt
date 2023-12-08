@@ -1,0 +1,8 @@
+C:\Users\PC\Documents\C# Programs\App Exports\LCModLoader.pdb
+C:\Users\PC\Documents\C# Programs\App Exports\LCModLoader.dll.config
+C:\Users\PC\Documents\C# Programs\App Exports\D3DCompiler_47_cor3.dll
+C:\Users\PC\Documents\C# Programs\App Exports\PenImc_cor3.dll
+C:\Users\PC\Documents\C# Programs\App Exports\PresentationNative_cor3.dll
+C:\Users\PC\Documents\C# Programs\App Exports\vcruntime140_cor3.dll
+C:\Users\PC\Documents\C# Programs\App Exports\wpfgfx_cor3.dll
+C:\Users\PC\Documents\C# Programs\App Exports\LCModLoader.exe

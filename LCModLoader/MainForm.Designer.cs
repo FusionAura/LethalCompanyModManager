@@ -30,406 +30,432 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.SavePlayBtn = new System.Windows.Forms.Button();
-            this.ModListSaveBtn = new System.Windows.Forms.Button();
-            this.AddModBtn = new System.Windows.Forms.Button();
-            this.ProfileList = new System.Windows.Forms.ComboBox();
-            this.ProfileListLabel = new System.Windows.Forms.Label();
-            this.ModUpdateBtn = new System.Windows.Forms.Button();
-            this.ModRemoveBtn = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.dataGridBoolColumn1 = new System.Windows.Forms.DataGridBoolColumn();
-            this.dataGridBoolColumn2 = new System.Windows.Forms.DataGridBoolColumn();
-            this.dataGridBoolColumn3 = new System.Windows.Forms.DataGridBoolColumn();
-            this.ModListLabel = new System.Windows.Forms.Label();
-            this.dataGridBoolColumn4 = new System.Windows.Forms.DataGridBoolColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.BtnProfileEditor = new System.Windows.Forms.Button();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openExplorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addModToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.profileListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.githubRepoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.submitBugsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.ModName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Author = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Version = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.modDescription = new System.Windows.Forms.GroupBox();
-            this.BtnNewProfile = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.menuStrip1.SuspendLayout();
-            this.SuspendLayout();
+            SavePlayBtn = new System.Windows.Forms.Button();
+            ModListSaveBtn = new System.Windows.Forms.Button();
+            AddModBtn = new System.Windows.Forms.Button();
+            ProfileList = new System.Windows.Forms.ComboBox();
+            profileBindingSource = new System.Windows.Forms.BindingSource(components);
+            ProfileListLabel = new System.Windows.Forms.Label();
+            ModUpdateBtn = new System.Windows.Forms.Button();
+            ModRemoveBtn = new System.Windows.Forms.Button();
+            label3 = new System.Windows.Forms.Label();
+            pictureBox1 = new System.Windows.Forms.PictureBox();
+            dataGridBoolColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            dataGridBoolColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            dataGridBoolColumn3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            ModListLabel = new System.Windows.Forms.Label();
+            dataGridBoolColumn4 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            button1 = new System.Windows.Forms.Button();
+            label1 = new System.Windows.Forms.Label();
+            BtnProfileEditor = new System.Windows.Forms.Button();
+            fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            openExplorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            addModToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            profileListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            githubRepoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            submitBugsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            menuStrip1 = new System.Windows.Forms.MenuStrip();
+            listView1 = new System.Windows.Forms.ListView();
+            ModName = new System.Windows.Forms.ColumnHeader();
+            Author = new System.Windows.Forms.ColumnHeader();
+            Version = new System.Windows.Forms.ColumnHeader();
+            modDescription = new System.Windows.Forms.GroupBox();
+            BtnNewProfile = new System.Windows.Forms.Button();
+            settingsBindingSource = new System.Windows.Forms.BindingSource(components);
+            ((System.ComponentModel.ISupportInitialize)profileBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)settingsBindingSource).BeginInit();
+            SuspendLayout();
             // 
             // SavePlayBtn
             // 
-            this.SavePlayBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.SavePlayBtn.Location = new System.Drawing.Point(12, 526);
-            this.SavePlayBtn.MinimumSize = new System.Drawing.Size(92, 24);
-            this.SavePlayBtn.Name = "SavePlayBtn";
-            this.SavePlayBtn.Size = new System.Drawing.Size(92, 24);
-            this.SavePlayBtn.TabIndex = 0;
-            this.SavePlayBtn.Text = "Save and Play";
-            this.SavePlayBtn.UseVisualStyleBackColor = true;
+            SavePlayBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            SavePlayBtn.Location = new System.Drawing.Point(14, 607);
+            SavePlayBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            SavePlayBtn.MinimumSize = new System.Drawing.Size(107, 28);
+            SavePlayBtn.Name = "SavePlayBtn";
+            SavePlayBtn.Size = new System.Drawing.Size(107, 28);
+            SavePlayBtn.TabIndex = 0;
+            SavePlayBtn.Text = "Save and Play";
+            SavePlayBtn.UseVisualStyleBackColor = true;
             // 
             // ModListSaveBtn
             // 
-            this.ModListSaveBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.ModListSaveBtn.Location = new System.Drawing.Point(110, 526);
-            this.ModListSaveBtn.MinimumSize = new System.Drawing.Size(92, 24);
-            this.ModListSaveBtn.Name = "ModListSaveBtn";
-            this.ModListSaveBtn.Size = new System.Drawing.Size(92, 24);
-            this.ModListSaveBtn.TabIndex = 1;
-            this.ModListSaveBtn.Text = "Save Mod List";
-            this.ModListSaveBtn.UseVisualStyleBackColor = true;
+            ModListSaveBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            ModListSaveBtn.Location = new System.Drawing.Point(128, 607);
+            ModListSaveBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            ModListSaveBtn.MinimumSize = new System.Drawing.Size(107, 28);
+            ModListSaveBtn.Name = "ModListSaveBtn";
+            ModListSaveBtn.Size = new System.Drawing.Size(107, 28);
+            ModListSaveBtn.TabIndex = 1;
+            ModListSaveBtn.Text = "Save Mod List";
+            ModListSaveBtn.UseVisualStyleBackColor = true;
             // 
             // AddModBtn
             // 
-            this.AddModBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddModBtn.Location = new System.Drawing.Point(11, 351);
-            this.AddModBtn.MinimumSize = new System.Drawing.Size(92, 25);
-            this.AddModBtn.Name = "AddModBtn";
-            this.AddModBtn.Size = new System.Drawing.Size(92, 25);
-            this.AddModBtn.TabIndex = 7;
-            this.AddModBtn.Text = "Add Mod";
-            this.AddModBtn.UseVisualStyleBackColor = true;
-            this.AddModBtn.Click += new System.EventHandler(this.AddModBtn_Click);
+            AddModBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            AddModBtn.Location = new System.Drawing.Point(13, 405);
+            AddModBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            AddModBtn.MinimumSize = new System.Drawing.Size(107, 29);
+            AddModBtn.Name = "AddModBtn";
+            AddModBtn.Size = new System.Drawing.Size(107, 29);
+            AddModBtn.TabIndex = 7;
+            AddModBtn.Text = "Add Mod";
+            AddModBtn.UseVisualStyleBackColor = true;
+            AddModBtn.Click += AddModBtn_Click;
             // 
             // ProfileList
             // 
-            this.ProfileList.FormattingEnabled = true;
-            this.ProfileList.Location = new System.Drawing.Point(12, 46);
-            this.ProfileList.MinimumSize = new System.Drawing.Size(167, 0);
-            this.ProfileList.Name = "ProfileList";
-            this.ProfileList.Size = new System.Drawing.Size(167, 21);
-            this.ProfileList.TabIndex = 10;
+            ProfileList.DataBindings.Add(new System.Windows.Forms.Binding("Text", profileBindingSource, "ProfileName", true));
+            ProfileList.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", profileBindingSource, "ProfileName", true));
+            ProfileList.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", profileBindingSource, "ProfileName", true));
+            ProfileList.DataBindings.Add(new System.Windows.Forms.Binding("DataContext", profileBindingSource, "ProfileName", true));
+            ProfileList.DataSource = settingsBindingSource;
+            ProfileList.FormattingEnabled = true;
+            ProfileList.Location = new System.Drawing.Point(14, 53);
+            ProfileList.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            ProfileList.MinimumSize = new System.Drawing.Size(194, 0);
+            ProfileList.Name = "ProfileList";
+            ProfileList.Size = new System.Drawing.Size(194, 23);
+            ProfileList.TabIndex = 10;
+            ProfileList.SelectedIndexChanged += ProfileList_SelectedIndexChanged;
+            // 
+            // profileBindingSource
+            // 
+            profileBindingSource.DataSource = typeof(Profile);
             // 
             // ProfileListLabel
             // 
-            this.ProfileListLabel.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProfileListLabel.Location = new System.Drawing.Point(12, 24);
-            this.ProfileListLabel.Name = "ProfileListLabel";
-            this.ProfileListLabel.Size = new System.Drawing.Size(130, 19);
-            this.ProfileListLabel.TabIndex = 11;
-            this.ProfileListLabel.Text = "Current Profile";
-            this.ProfileListLabel.Click += new System.EventHandler(this.label1_Click_1);
+            ProfileListLabel.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            ProfileListLabel.Location = new System.Drawing.Point(14, 28);
+            ProfileListLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            ProfileListLabel.Name = "ProfileListLabel";
+            ProfileListLabel.Size = new System.Drawing.Size(152, 22);
+            ProfileListLabel.TabIndex = 11;
+            ProfileListLabel.Text = "Current Profile";
+            ProfileListLabel.Click += label1_Click_1;
             // 
             // ModUpdateBtn
             // 
-            this.ModUpdateBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ModUpdateBtn.Location = new System.Drawing.Point(186, 93);
-            this.ModUpdateBtn.MinimumSize = new System.Drawing.Size(112, 25);
-            this.ModUpdateBtn.Name = "ModUpdateBtn";
-            this.ModUpdateBtn.Size = new System.Drawing.Size(112, 25);
-            this.ModUpdateBtn.TabIndex = 13;
-            this.ModUpdateBtn.Text = "Check For Updates";
-            this.ModUpdateBtn.UseVisualStyleBackColor = true;
+            ModUpdateBtn.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            ModUpdateBtn.Location = new System.Drawing.Point(217, 107);
+            ModUpdateBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            ModUpdateBtn.MinimumSize = new System.Drawing.Size(131, 29);
+            ModUpdateBtn.Name = "ModUpdateBtn";
+            ModUpdateBtn.Size = new System.Drawing.Size(131, 29);
+            ModUpdateBtn.TabIndex = 13;
+            ModUpdateBtn.Text = "Check For Updates";
+            ModUpdateBtn.UseVisualStyleBackColor = true;
             // 
             // ModRemoveBtn
             // 
-            this.ModRemoveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ModRemoveBtn.Location = new System.Drawing.Point(205, 351);
-            this.ModRemoveBtn.MinimumSize = new System.Drawing.Size(92, 25);
-            this.ModRemoveBtn.Name = "ModRemoveBtn";
-            this.ModRemoveBtn.Size = new System.Drawing.Size(92, 25);
-            this.ModRemoveBtn.TabIndex = 14;
-            this.ModRemoveBtn.Text = "Remove Mod";
-            this.ModRemoveBtn.UseVisualStyleBackColor = true;
-            this.ModRemoveBtn.Click += new System.EventHandler(this.ModRemoveBtn_Click);
+            ModRemoveBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            ModRemoveBtn.Location = new System.Drawing.Point(239, 405);
+            ModRemoveBtn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            ModRemoveBtn.MinimumSize = new System.Drawing.Size(107, 29);
+            ModRemoveBtn.Name = "ModRemoveBtn";
+            ModRemoveBtn.Size = new System.Drawing.Size(107, 29);
+            ModRemoveBtn.TabIndex = 14;
+            ModRemoveBtn.Text = "Remove Mod";
+            ModRemoveBtn.UseVisualStyleBackColor = true;
+            ModRemoveBtn.Click += ModRemoveBtn_Click;
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Green;
-            this.label3.Location = new System.Drawing.Point(217, 523);
-            this.label3.MinimumSize = new System.Drawing.Size(81, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 16);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Mods Active";
+            label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            label3.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label3.ForeColor = System.Drawing.Color.Green;
+            label3.Location = new System.Drawing.Point(253, 603);
+            label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label3.MinimumSize = new System.Drawing.Size(94, 18);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(94, 18);
+            label3.TabIndex = 15;
+            label3.Text = "Mods Active";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(185, 24);
-            this.pictureBox1.MinimumSize = new System.Drawing.Size(113, 63);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(113, 63);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 16;
-            this.pictureBox1.TabStop = false;
+            pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            pictureBox1.Image = (System.Drawing.Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new System.Drawing.Point(216, 28);
+            pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            pictureBox1.MinimumSize = new System.Drawing.Size(132, 73);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new System.Drawing.Size(132, 73);
+            pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 16;
+            pictureBox1.TabStop = false;
             // 
             // dataGridBoolColumn1
             // 
-            this.dataGridBoolColumn1.Width = -1;
+            dataGridBoolColumn1.Name = "dataGridBoolColumn1";
+            dataGridBoolColumn1.Width = 5;
             // 
             // dataGridBoolColumn2
             // 
-            this.dataGridBoolColumn2.Width = -1;
+            dataGridBoolColumn2.Name = "dataGridBoolColumn2";
+            dataGridBoolColumn2.Width = 5;
             // 
             // dataGridBoolColumn3
             // 
-            this.dataGridBoolColumn3.Width = -1;
+            dataGridBoolColumn3.Name = "dataGridBoolColumn3";
+            dataGridBoolColumn3.Width = 5;
             // 
             // ModListLabel
             // 
-            this.ModListLabel.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ModListLabel.Location = new System.Drawing.Point(12, 99);
-            this.ModListLabel.Name = "ModListLabel";
-            this.ModListLabel.Size = new System.Drawing.Size(295, 20);
-            this.ModListLabel.TabIndex = 12;
-            this.ModListLabel.Text = "ModList";
+            ModListLabel.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            ModListLabel.Location = new System.Drawing.Point(14, 114);
+            ModListLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            ModListLabel.Name = "ModListLabel";
+            ModListLabel.Size = new System.Drawing.Size(344, 23);
+            ModListLabel.TabIndex = 12;
+            ModListLabel.Text = "ModList";
             // 
             // dataGridBoolColumn4
             // 
-            this.dataGridBoolColumn4.Width = -1;
+            dataGridBoolColumn4.Name = "dataGridBoolColumn4";
+            dataGridBoolColumn4.Width = 5;
             // 
             // button1
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button1.Location = new System.Drawing.Point(107, 351);
-            this.button1.MinimumSize = new System.Drawing.Size(92, 25);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 25);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Mod Settings";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            button1.Location = new System.Drawing.Point(125, 405);
+            button1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            button1.MinimumSize = new System.Drawing.Size(107, 29);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(107, 29);
+            button1.TabIndex = 17;
+            button1.Text = "Mod Settings";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label1.Location = new System.Drawing.Point(211, 539);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 23);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "5";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            label1.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label1.ForeColor = System.Drawing.SystemColors.Desktop;
+            label1.Location = new System.Drawing.Point(246, 622);
+            label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(102, 27);
+            label1.TabIndex = 18;
+            label1.Text = "5";
+            label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // BtnProfileEditor
             // 
-            this.BtnProfileEditor.Location = new System.Drawing.Point(115, 72);
-            this.BtnProfileEditor.MinimumSize = new System.Drawing.Size(65, 24);
-            this.BtnProfileEditor.Name = "BtnProfileEditor";
-            this.BtnProfileEditor.Size = new System.Drawing.Size(65, 24);
-            this.BtnProfileEditor.TabIndex = 19;
-            this.BtnProfileEditor.Text = "Edit Profile\r\ns";
-            this.BtnProfileEditor.UseVisualStyleBackColor = true;
-            this.BtnProfileEditor.Click += new System.EventHandler(this.button2_Click);
+            BtnProfileEditor.Location = new System.Drawing.Point(134, 83);
+            BtnProfileEditor.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BtnProfileEditor.MinimumSize = new System.Drawing.Size(76, 28);
+            BtnProfileEditor.Name = "BtnProfileEditor";
+            BtnProfileEditor.Size = new System.Drawing.Size(76, 28);
+            BtnProfileEditor.TabIndex = 19;
+            BtnProfileEditor.Text = "Edit Profile\r\ns";
+            BtnProfileEditor.UseVisualStyleBackColor = true;
+            BtnProfileEditor.Click += button2_Click;
             // 
             // fileToolStripMenuItem
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openExplorerToolStripMenuItem,
-            this.addModToolStripMenuItem,
-            this.checkForUpdatesToolStripMenuItem,
-            this.quitToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
+            fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { openExplorerToolStripMenuItem, addModToolStripMenuItem, checkForUpdatesToolStripMenuItem, quitToolStripMenuItem });
+            fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            fileToolStripMenuItem.Text = "File";
             // 
             // openExplorerToolStripMenuItem
             // 
-            this.openExplorerToolStripMenuItem.Name = "openExplorerToolStripMenuItem";
-            this.openExplorerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.openExplorerToolStripMenuItem.Text = "Open Explorer";
-            this.openExplorerToolStripMenuItem.Click += new System.EventHandler(this.openExplorerToolStripMenuItem_Click);
+            openExplorerToolStripMenuItem.Name = "openExplorerToolStripMenuItem";
+            openExplorerToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            openExplorerToolStripMenuItem.Text = "Open Explorer";
+            openExplorerToolStripMenuItem.Click += openExplorerToolStripMenuItem_Click;
             // 
             // addModToolStripMenuItem
             // 
-            this.addModToolStripMenuItem.Name = "addModToolStripMenuItem";
-            this.addModToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.addModToolStripMenuItem.Text = "Add Mod";
+            addModToolStripMenuItem.Name = "addModToolStripMenuItem";
+            addModToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            addModToolStripMenuItem.Text = "Add Mod";
             // 
             // checkForUpdatesToolStripMenuItem
             // 
-            this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
-            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.checkForUpdatesToolStripMenuItem.Text = "Check For Updates";
+            checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
+            checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            checkForUpdatesToolStripMenuItem.Text = "Check For Updates";
             // 
             // quitToolStripMenuItem
             // 
-            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.quitToolStripMenuItem.Text = "Quit";
+            quitToolStripMenuItem.Name = "quitToolStripMenuItem";
+            quitToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            quitToolStripMenuItem.Text = "Quit";
+            quitToolStripMenuItem.Click += quitToolStripMenuItem_Click;
             // 
             // settingsToolStripMenuItem
             // 
-            this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.preferencesToolStripMenuItem,
-            this.profileListToolStripMenuItem});
-            this.settingsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Historic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.settingsToolStripMenuItem.Text = "Settings";
-            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { preferencesToolStripMenuItem, profileListToolStripMenuItem });
+            settingsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Historic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            settingsToolStripMenuItem.Text = "Settings";
+            settingsToolStripMenuItem.Click += settingsToolStripMenuItem_Click;
             // 
             // preferencesToolStripMenuItem
             // 
-            this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.preferencesToolStripMenuItem.Text = "Preferences";
-            this.preferencesToolStripMenuItem.Click += new System.EventHandler(this.preferencesToolStripMenuItem_Click);
+            preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
+            preferencesToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            preferencesToolStripMenuItem.Text = "Preferences";
+            preferencesToolStripMenuItem.Click += preferencesToolStripMenuItem_Click;
             // 
             // profileListToolStripMenuItem
             // 
-            this.profileListToolStripMenuItem.Name = "profileListToolStripMenuItem";
-            this.profileListToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.profileListToolStripMenuItem.Text = "Profile List";
-            this.profileListToolStripMenuItem.Click += new System.EventHandler(this.profileListToolStripMenuItem_Click);
+            profileListToolStripMenuItem.Name = "profileListToolStripMenuItem";
+            profileListToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            profileListToolStripMenuItem.Text = "Profile List";
+            profileListToolStripMenuItem.Click += profileListToolStripMenuItem_Click;
             // 
             // infoToolStripMenuItem
             // 
-            this.infoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.githubRepoToolStripMenuItem,
-            this.submitBugsToolStripMenuItem,
-            this.aboutToolStripMenuItem});
-            this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
-            this.infoToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
-            this.infoToolStripMenuItem.Text = "Info";
+            infoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { githubRepoToolStripMenuItem, submitBugsToolStripMenuItem, aboutToolStripMenuItem });
+            infoToolStripMenuItem.Name = "infoToolStripMenuItem";
+            infoToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            infoToolStripMenuItem.Text = "Info";
             // 
             // githubRepoToolStripMenuItem
             // 
-            this.githubRepoToolStripMenuItem.Name = "githubRepoToolStripMenuItem";
-            this.githubRepoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.githubRepoToolStripMenuItem.Text = "Github Repo";
-            this.githubRepoToolStripMenuItem.Click += new System.EventHandler(this.githubRepoToolStripMenuItem_Click);
+            githubRepoToolStripMenuItem.Name = "githubRepoToolStripMenuItem";
+            githubRepoToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            githubRepoToolStripMenuItem.Text = "Github Repo";
+            githubRepoToolStripMenuItem.Click += githubRepoToolStripMenuItem_Click;
             // 
             // submitBugsToolStripMenuItem
             // 
-            this.submitBugsToolStripMenuItem.Name = "submitBugsToolStripMenuItem";
-            this.submitBugsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.submitBugsToolStripMenuItem.Text = "Submit Bugs";
-            this.submitBugsToolStripMenuItem.Click += new System.EventHandler(this.submitBugsToolStripMenuItem_Click);
+            submitBugsToolStripMenuItem.Name = "submitBugsToolStripMenuItem";
+            submitBugsToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            submitBugsToolStripMenuItem.Text = "Submit Bugs";
+            submitBugsToolStripMenuItem.Click += submitBugsToolStripMenuItem_Click;
             // 
             // aboutToolStripMenuItem
             // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            aboutToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            aboutToolStripMenuItem.Text = "About";
+            aboutToolStripMenuItem.Click += aboutToolStripMenuItem_Click;
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
-            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.settingsToolStripMenuItem,
-            this.infoToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(304, 24);
-            this.menuStrip1.TabIndex = 5;
-            this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
+            menuStrip1.BackColor = System.Drawing.Color.Transparent;
+            menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, settingsToolStripMenuItem, infoToolStripMenuItem });
+            menuStrip1.Location = new System.Drawing.Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+            menuStrip1.Size = new System.Drawing.Size(355, 24);
+            menuStrip1.TabIndex = 5;
+            menuStrip1.Text = "menuStrip1";
+            menuStrip1.ItemClicked += menuStrip1_ItemClicked;
             // 
             // listView1
             // 
-            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView1.CheckBoxes = true;
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ModName,
-            this.Author,
-            this.Version});
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(11, 122);
-            this.listView1.MinimumSize = new System.Drawing.Size(286, 215);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(286, 223);
-            this.listView1.TabIndex = 20;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            listView1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            listView1.CheckBoxes = true;
+            listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { ModName, Author, Version });
+            listView1.Location = new System.Drawing.Point(13, 141);
+            listView1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            listView1.MinimumSize = new System.Drawing.Size(333, 247);
+            listView1.Name = "listView1";
+            listView1.Size = new System.Drawing.Size(333, 257);
+            listView1.TabIndex = 20;
+            listView1.UseCompatibleStateImageBehavior = false;
+            listView1.View = System.Windows.Forms.View.Details;
+            listView1.SelectedIndexChanged += listView1_SelectedIndexChanged;
             // 
             // ModName
             // 
-            this.ModName.Text = "Mod Name";
-            this.ModName.Width = 128;
+            ModName.Text = "Mod Name";
+            ModName.Width = 128;
             // 
             // Author
             // 
-            this.Author.Text = "Author";
-            this.Author.Width = 72;
+            Author.Text = "Author";
+            Author.Width = 72;
             // 
             // Version
             // 
-            this.Version.Text = "Version";
+            Version.Text = "Version";
             // 
             // modDescription
             // 
-            this.modDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.modDescription.Location = new System.Drawing.Point(12, 382);
-            this.modDescription.Name = "modDescription";
-            this.modDescription.Size = new System.Drawing.Size(286, 138);
-            this.modDescription.TabIndex = 21;
-            this.modDescription.TabStop = false;
-            this.modDescription.Text = "Description";
-            this.modDescription.Enter += new System.EventHandler(this.modDescription_Enter);
+            modDescription.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            modDescription.Location = new System.Drawing.Point(14, 441);
+            modDescription.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            modDescription.Name = "modDescription";
+            modDescription.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            modDescription.Size = new System.Drawing.Size(334, 159);
+            modDescription.TabIndex = 21;
+            modDescription.TabStop = false;
+            modDescription.Text = "Description";
+            modDescription.Enter += modDescription_Enter;
             // 
             // BtnNewProfile
             // 
-            this.BtnNewProfile.Location = new System.Drawing.Point(11, 72);
-            this.BtnNewProfile.MinimumSize = new System.Drawing.Size(65, 24);
-            this.BtnNewProfile.Name = "BtnNewProfile";
-            this.BtnNewProfile.Size = new System.Drawing.Size(65, 24);
-            this.BtnNewProfile.TabIndex = 22;
-            this.BtnNewProfile.Text = "Create Profile\r\n";
-            this.BtnNewProfile.UseVisualStyleBackColor = true;
-            this.BtnNewProfile.Click += new System.EventHandler(this.BtnNewProfile_Click);
+            BtnNewProfile.Location = new System.Drawing.Point(13, 83);
+            BtnNewProfile.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BtnNewProfile.MinimumSize = new System.Drawing.Size(76, 28);
+            BtnNewProfile.Name = "BtnNewProfile";
+            BtnNewProfile.Size = new System.Drawing.Size(76, 28);
+            BtnNewProfile.TabIndex = 22;
+            BtnNewProfile.Text = "Create Profile\r\n";
+            BtnNewProfile.UseVisualStyleBackColor = true;
+            BtnNewProfile.Click += BtnNewProfile_Click;
+            // 
+            // settingsBindingSource
+            // 
+            settingsBindingSource.DataSource = typeof(Settings);
+            settingsBindingSource.CurrentChanged += settingsBindingSource_CurrentChanged;
             // 
             // MainForm
             // 
-            this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 561);
-            this.Controls.Add(this.BtnNewProfile);
-            this.Controls.Add(this.ModRemoveBtn);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.AddModBtn);
-            this.Controls.Add(this.modDescription);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.BtnProfileEditor);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.ModUpdateBtn);
-            this.Controls.Add(this.ModListLabel);
-            this.Controls.Add(this.ProfileListLabel);
-            this.Controls.Add(this.ProfileList);
-            this.Controls.Add(this.ModListSaveBtn);
-            this.Controls.Add(this.SavePlayBtn);
-            this.Controls.Add(this.menuStrip1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(320, 600);
-            this.Name = "MainForm";
-            this.Text = "Lethal Company Mod Manager";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AllowDrop = true;
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(355, 647);
+            Controls.Add(BtnNewProfile);
+            Controls.Add(ModRemoveBtn);
+            Controls.Add(button1);
+            Controls.Add(AddModBtn);
+            Controls.Add(modDescription);
+            Controls.Add(listView1);
+            Controls.Add(BtnProfileEditor);
+            Controls.Add(label1);
+            Controls.Add(pictureBox1);
+            Controls.Add(label3);
+            Controls.Add(ModUpdateBtn);
+            Controls.Add(ModListLabel);
+            Controls.Add(ProfileListLabel);
+            Controls.Add(ProfileList);
+            Controls.Add(ModListSaveBtn);
+            Controls.Add(SavePlayBtn);
+            Controls.Add(menuStrip1);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            MainMenuStrip = menuStrip1;
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            MinimumSize = new System.Drawing.Size(371, 686);
+            Name = "MainForm";
+            Text = "Lethal Company Mod Manager";
+            Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)profileBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)settingsBindingSource).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         private System.Windows.Forms.Button BtnProfileEditor;
@@ -438,15 +464,15 @@
 
         private System.Windows.Forms.Button button1;
 
-        private System.Windows.Forms.DataGridBoolColumn dataGridBoolColumn4;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridBoolColumn4;
 
         private System.Windows.Forms.ToolStripMenuItem submitBugsToolStripMenuItem;
         private System.Windows.Forms.Label ModListLabel;
 
-        private System.Windows.Forms.DataGridBoolColumn dataGridBoolColumn3;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridBoolColumn3;
 
-        private System.Windows.Forms.DataGridBoolColumn dataGridBoolColumn1;
-        private System.Windows.Forms.DataGridBoolColumn dataGridBoolColumn2;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridBoolColumn1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridBoolColumn2;
 
         private System.Windows.Forms.PictureBox pictureBox1;
 
@@ -486,5 +512,7 @@
         private System.Windows.Forms.ColumnHeader Version;
         private System.Windows.Forms.GroupBox modDescription;
         private System.Windows.Forms.Button BtnNewProfile;
+        private System.Windows.Forms.BindingSource profileBindingSource;
+        private System.Windows.Forms.BindingSource settingsBindingSource;
     }
 }

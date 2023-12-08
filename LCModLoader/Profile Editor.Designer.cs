@@ -29,120 +29,125 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Profile_Editor));
-            this.ProfileList = new System.Windows.Forms.ListView();
-            this.ProfileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ActiveModCount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.BtnNewProfile = new System.Windows.Forms.Button();
-            this.BTNDelete = new System.Windows.Forms.Button();
-            this.BtnClearProfile = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.BtnLoadProfile = new System.Windows.Forms.Button();
-            this.BtnClose = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            ProfileList = new System.Windows.Forms.ListView();
+            ProfileName = new System.Windows.Forms.ColumnHeader();
+            ActiveModCount = new System.Windows.Forms.ColumnHeader();
+            BtnNewProfile = new System.Windows.Forms.Button();
+            BTNDelete = new System.Windows.Forms.Button();
+            BtnClearProfile = new System.Windows.Forms.Button();
+            label1 = new System.Windows.Forms.Label();
+            BtnLoadProfile = new System.Windows.Forms.Button();
+            BtnClose = new System.Windows.Forms.Button();
+            SuspendLayout();
             // 
             // ProfileList
             // 
-            this.ProfileList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ProfileName,
-            this.ActiveModCount});
-            this.ProfileList.HideSelection = false;
-            this.ProfileList.Location = new System.Drawing.Point(12, 36);
-            this.ProfileList.Name = "ProfileList";
-            this.ProfileList.Size = new System.Drawing.Size(280, 124);
-            this.ProfileList.TabIndex = 0;
-            this.ProfileList.UseCompatibleStateImageBehavior = false;
-            this.ProfileList.View = System.Windows.Forms.View.Details;
+            ProfileList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] { ProfileName, ActiveModCount });
+            ProfileList.Location = new System.Drawing.Point(14, 42);
+            ProfileList.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            ProfileList.Name = "ProfileList";
+            ProfileList.Size = new System.Drawing.Size(326, 142);
+            ProfileList.TabIndex = 0;
+            ProfileList.UseCompatibleStateImageBehavior = false;
+            ProfileList.View = System.Windows.Forms.View.Details;
+            ProfileList.SelectedIndexChanged += ProfileList_SelectedIndexChanged;
             // 
             // ProfileName
             // 
-            this.ProfileName.Text = "Profile Name";
-            this.ProfileName.Width = 178;
+            ProfileName.Text = "Profile Name";
+            ProfileName.Width = 178;
             // 
             // ActiveModCount
             // 
-            this.ActiveModCount.Text = "Active Mod Count";
-            this.ActiveModCount.Width = 98;
+            ActiveModCount.Text = "Active Mod Count";
+            ActiveModCount.Width = 98;
             // 
             // BtnNewProfile
             // 
-            this.BtnNewProfile.Location = new System.Drawing.Point(217, 166);
-            this.BtnNewProfile.Name = "BtnNewProfile";
-            this.BtnNewProfile.Size = new System.Drawing.Size(75, 23);
-            this.BtnNewProfile.TabIndex = 1;
-            this.BtnNewProfile.Text = "New Profile";
-            this.BtnNewProfile.UseVisualStyleBackColor = true;
-            this.BtnNewProfile.Click += new System.EventHandler(this.button1_Click);
+            BtnNewProfile.Location = new System.Drawing.Point(253, 192);
+            BtnNewProfile.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BtnNewProfile.Name = "BtnNewProfile";
+            BtnNewProfile.Size = new System.Drawing.Size(88, 27);
+            BtnNewProfile.TabIndex = 1;
+            BtnNewProfile.Text = "New Profile";
+            BtnNewProfile.UseVisualStyleBackColor = true;
+            BtnNewProfile.Click += button1_Click;
             // 
             // BTNDelete
             // 
-            this.BTNDelete.Location = new System.Drawing.Point(217, 224);
-            this.BTNDelete.Name = "BTNDelete";
-            this.BTNDelete.Size = new System.Drawing.Size(75, 23);
-            this.BTNDelete.TabIndex = 2;
-            this.BTNDelete.Text = "Delete Profile";
-            this.BTNDelete.UseVisualStyleBackColor = true;
-            this.BTNDelete.Click += new System.EventHandler(this.BTNDelete_Click);
+            BTNDelete.Location = new System.Drawing.Point(253, 258);
+            BTNDelete.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BTNDelete.Name = "BTNDelete";
+            BTNDelete.Size = new System.Drawing.Size(88, 27);
+            BTNDelete.TabIndex = 2;
+            BTNDelete.Text = "Delete Profile";
+            BTNDelete.UseVisualStyleBackColor = true;
+            BTNDelete.Click += BTNDelete_Click;
             // 
             // BtnClearProfile
             // 
-            this.BtnClearProfile.Location = new System.Drawing.Point(217, 195);
-            this.BtnClearProfile.Name = "BtnClearProfile";
-            this.BtnClearProfile.Size = new System.Drawing.Size(75, 23);
-            this.BtnClearProfile.TabIndex = 3;
-            this.BtnClearProfile.Text = "Clear Profile";
-            this.BtnClearProfile.UseVisualStyleBackColor = true;
-            this.BtnClearProfile.Click += new System.EventHandler(this.button3_Click);
+            BtnClearProfile.Location = new System.Drawing.Point(253, 225);
+            BtnClearProfile.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BtnClearProfile.Name = "BtnClearProfile";
+            BtnClearProfile.Size = new System.Drawing.Size(88, 27);
+            BtnClearProfile.TabIndex = 3;
+            BtnClearProfile.Text = "Clear Profile";
+            BtnClearProfile.UseVisualStyleBackColor = true;
+            BtnClearProfile.Click += button3_Click;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 18);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Profile List";
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label1.Location = new System.Drawing.Point(14, 17);
+            label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(89, 18);
+            label1.TabIndex = 4;
+            label1.Text = "Profile List";
             // 
             // BtnLoadProfile
             // 
-            this.BtnLoadProfile.Location = new System.Drawing.Point(12, 166);
-            this.BtnLoadProfile.Name = "BtnLoadProfile";
-            this.BtnLoadProfile.Size = new System.Drawing.Size(75, 23);
-            this.BtnLoadProfile.TabIndex = 5;
-            this.BtnLoadProfile.Text = "Load Profile";
-            this.BtnLoadProfile.UseVisualStyleBackColor = true;
-            this.BtnLoadProfile.Click += new System.EventHandler(this.button4_Click);
+            BtnLoadProfile.Location = new System.Drawing.Point(14, 192);
+            BtnLoadProfile.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BtnLoadProfile.Name = "BtnLoadProfile";
+            BtnLoadProfile.Size = new System.Drawing.Size(88, 27);
+            BtnLoadProfile.TabIndex = 5;
+            BtnLoadProfile.Text = "Load Profile";
+            BtnLoadProfile.UseVisualStyleBackColor = true;
+            BtnLoadProfile.Click += button4_Click;
             // 
             // BtnClose
             // 
-            this.BtnClose.Location = new System.Drawing.Point(12, 224);
-            this.BtnClose.Name = "BtnClose";
-            this.BtnClose.Size = new System.Drawing.Size(75, 23);
-            this.BtnClose.TabIndex = 6;
-            this.BtnClose.Text = "Close";
-            this.BtnClose.UseVisualStyleBackColor = true;
-            this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
+            BtnClose.Location = new System.Drawing.Point(14, 258);
+            BtnClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            BtnClose.Name = "BtnClose";
+            BtnClose.Size = new System.Drawing.Size(88, 27);
+            BtnClose.TabIndex = 6;
+            BtnClose.Text = "Close";
+            BtnClose.UseVisualStyleBackColor = true;
+            BtnClose.Click += BtnClose_Click;
             // 
             // Profile_Editor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 253);
-            this.Controls.Add(this.BtnClose);
-            this.Controls.Add(this.BtnLoadProfile);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.BtnClearProfile);
-            this.Controls.Add(this.BTNDelete);
-            this.Controls.Add(this.BtnNewProfile);
-            this.Controls.Add(this.ProfileList);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Profile_Editor";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Mod Profile Editor";
-            this.Load += new System.EventHandler(this.Profile_Editor_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(355, 292);
+            Controls.Add(BtnClose);
+            Controls.Add(BtnLoadProfile);
+            Controls.Add(label1);
+            Controls.Add(BtnClearProfile);
+            Controls.Add(BTNDelete);
+            Controls.Add(BtnNewProfile);
+            Controls.Add(ProfileList);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "Profile_Editor";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            Text = "Mod Profile Editor";
+            Load += Profile_Editor_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

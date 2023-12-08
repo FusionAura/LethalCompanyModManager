@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace LCModLoader
 {
-    public class Settings
+    public struct Settings
     {
-        public string _gameDir;
-        public string _modDir;
-        public string _profileDir;
+        public string _gameExe { get; set; }
+        public string _gameDir { get; set; }
+        public string _modDir { get; set; }
+        public string _profileDir { get; set; }
+        public List<Profile> ProfileList { get; set; }
     }
 }

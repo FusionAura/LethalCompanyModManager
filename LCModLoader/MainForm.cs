@@ -1,23 +1,22 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Forms;
-using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace LCModLoader;
 
 public partial class MainForm : Form
 {
     private About _aboutApp = new();
+    private Settings _settings = new();
     private Profile_Editor _profileEditor = new();
     private List<ModFile> _modList = new();
+    private Profile _currentProfile;
+    private string _gameExe = "";
     private string _gameDir = "";
     private string _modDir = "";
     private string _profileDir = "";
@@ -36,12 +35,17 @@ public partial class MainForm : Form
             MessageBox.Show(message, title);
             FirstTimeBoot();
         }
+        GetConfigSettings();
     }
 
     private void GetConfigSettings()
     {
-        //TODO: Set _gameDir to game directory
+
         //TODO: Open Config file and copy list data to appropriate mod lists
+        _gameExe = _settings._gameExe;
+        _gameDir = _settings._gameDir;
+        _modDir = _settings._modDir;
+        _profileDir = _settings._profileDir;
     }
 
     private void FirstTimeBoot()
@@ -50,40 +54,78 @@ public partial class MainForm : Form
         Directory.CreateDirectory("Profiles");
 
         //TODO: If no config file exists, Create Config file.
-
-        //TODO: Check to see if in the game's directory. If game can't be found, prompt user to select game directory
         var game = "Lethal Company.exe";
-
+        var message = "The Mod Manager is not in the same folder as Lethal Company. Please select the location of the game.";
+        var title = "Lethal Company Not Found";
+        MessageBox.Show(message, title);
         if (File.Exists(game))
             _gameDir = Directory.GetCurrentDirectory();
         else
-           FindGameDir(game);
-        
+            FindGameDir(game);
+
+        //Create Default Profile
+        Profile Default = new();
+        Default.ProfileName = "Default";
+        Default.ActiveModList = new();
+        ProfileList.DataSource = _settings.ProfileList;
+        //Add Profile to Combobox.
+        ProfileList.Items.Insert(0, Default);
+        ProfileList.DisplayMember = Default.ProfileName;
+
+
+        ProfileList.Text = Default.ProfileName;
+
+
+        //Set Current Profile
+        _currentProfile = (Profile)ProfileList.Items[0];
+
+
+
+        //TODO: Check to see if in the game's directory. If game can't be found, prompt user to select game directory
         //TODO: If Game is found, check to see if BepInEx is installed
         //TODO: If BepInEx is not installed, Display prompt that it is missing.
+
+
     }
 
     private void FindGameDir(string game)
     {
-        var dialog = new CommonOpenFileDialog();
-        dialog.IsFolderPicker = true;
+
+        OpenFileDialog folderBrowser = new OpenFileDialog();
+        // Set validate names and check file exists to false otherwise windows will
+        // not let you select "Folder Selection."
+        folderBrowser.ValidateNames = false;
+        folderBrowser.CheckFileExists = false;
+        folderBrowser.CheckPathExists = true;
+        // Always default to Folder Selection.
+        folderBrowser.FileName = game;
+
+
         while (_gameDir == "")
         {
-            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            if (folderBrowser.ShowDialog() == DialogResult.OK)
             {
-                if (File.Exists(dialog.FileName+@"\"+game))
-                    _gameDir = Directory.GetCurrentDirectory();
-                else
+                if (File.Exists(Path.GetDirectoryName(folderBrowser.FileName) + @"\" + game))
                 {
-                    CanNotFindGame(game);
+                    _settings._gameExe = Path.GetDirectoryName(folderBrowser.FileName) + @"\" + Path.GetFileName(folderBrowser.FileName);
+                    _settings._gameDir = Path.GetDirectoryName(folderBrowser.FileName);
+                    _settings._modDir = Directory.GetCurrentDirectory() + @"/Mods";
+                    _settings._profileDir = Directory.GetCurrentDirectory() + @"/Profiles";
+
+                    _gameExe = _settings._gameExe;
+                    _gameDir = _settings._gameDir;
+                    _modDir = _settings._modDir;
+                    _profileDir = _settings._profileDir;
                 }
+                else
+                    CanNotFindGame(game);
+
             }
             else
-            {
                 CanNotFindGame(game);
-            }
+
         }
-        
+
     }
 
     void CanNotFindGame(string game)
@@ -94,10 +136,9 @@ public partial class MainForm : Form
         if (dialogResult == DialogResult.Yes)
             FindGameDir(game);
         else if (dialogResult == DialogResult.No)
-        {
             _gameDir = "Error";
-            
-        }
+
+
     }
 
     private void LoadProfile()
@@ -175,11 +216,20 @@ public partial class MainForm : Form
 
     private void githubRepoToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        Process.Start("https://github.com/FusionAura/LethalCompanyModManager");
+        Process.Start(new ProcessStartInfo
+        {
+            FileName = "https://github.com/FusionAura/LethalCompanyModManager",
+            UseShellExecute = true
+        });
     }
 
     private void submitBugsToolStripMenuItem_Click(object sender, EventArgs e)
     {
+        Process.Start(new ProcessStartInfo
+        {
+            FileName = "https://github.com/FusionAura/LethalCompanyModManager/issues/new",
+            UseShellExecute = true
+        });
     }
 
     private void preferencesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -203,6 +253,21 @@ public partial class MainForm : Form
         }
 
         //@"c:\"
-        Process.Start(_gameDir);
+        Process.Start("explorer.exe", _gameDir);
+    }
+
+    private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        Application.Exit();
+    }
+
+    private void ProfileList_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    private void settingsBindingSource_CurrentChanged(object sender, EventArgs e)
+    {
+
     }
 }
