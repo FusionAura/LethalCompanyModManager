@@ -37,6 +37,8 @@
             AddModBtn = new System.Windows.Forms.Button();
             ProfileList = new System.Windows.Forms.ComboBox();
             profileBindingSource = new System.Windows.Forms.BindingSource(components);
+            profileListBindingSource = new System.Windows.Forms.BindingSource(components);
+            settingsBindingSource = new System.Windows.Forms.BindingSource(components);
             ProfileListLabel = new System.Windows.Forms.Label();
             ModUpdateBtn = new System.Windows.Forms.Button();
             ModRemoveBtn = new System.Windows.Forms.Button();
@@ -69,11 +71,13 @@
             Version = new System.Windows.Forms.ColumnHeader();
             modDescription = new System.Windows.Forms.GroupBox();
             BtnNewProfile = new System.Windows.Forms.Button();
-            settingsBindingSource = new System.Windows.Forms.BindingSource(components);
+            activeModListBindingSource = new System.Windows.Forms.BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)profileBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)profileListBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)settingsBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)settingsBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)activeModListBindingSource).BeginInit();
             SuspendLayout();
             // 
             // SavePlayBtn
@@ -119,7 +123,9 @@
             ProfileList.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", profileBindingSource, "ProfileName", true));
             ProfileList.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", profileBindingSource, "ProfileName", true));
             ProfileList.DataBindings.Add(new System.Windows.Forms.Binding("DataContext", profileBindingSource, "ProfileName", true));
-            ProfileList.DataSource = settingsBindingSource;
+            ProfileList.DataSource = profileListBindingSource;
+            ProfileList.DisplayMember = "ProfileName";
+            ProfileList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             ProfileList.FormattingEnabled = true;
             ProfileList.Location = new System.Drawing.Point(14, 53);
             ProfileList.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -132,6 +138,16 @@
             // profileBindingSource
             // 
             profileBindingSource.DataSource = typeof(Profile);
+            // 
+            // profileListBindingSource
+            // 
+            profileListBindingSource.DataMember = "ProfileList";
+            profileListBindingSource.DataSource = settingsBindingSource;
+            // 
+            // settingsBindingSource
+            // 
+            settingsBindingSource.DataSource = typeof(Settings);
+            settingsBindingSource.CurrentChanged += settingsBindingSource_CurrentChanged;
             // 
             // ProfileListLabel
             // 
@@ -174,7 +190,7 @@
             label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
             label3.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             label3.ForeColor = System.Drawing.Color.Green;
-            label3.Location = new System.Drawing.Point(253, 603);
+            label3.Location = new System.Drawing.Point(261, 607);
             label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label3.MinimumSize = new System.Drawing.Size(94, 18);
             label3.Name = "label3";
@@ -414,10 +430,10 @@
             BtnNewProfile.UseVisualStyleBackColor = true;
             BtnNewProfile.Click += BtnNewProfile_Click;
             // 
-            // settingsBindingSource
+            // activeModListBindingSource
             // 
-            settingsBindingSource.DataSource = typeof(Settings);
-            settingsBindingSource.CurrentChanged += settingsBindingSource_CurrentChanged;
+            activeModListBindingSource.DataMember = "ActiveModList";
+            activeModListBindingSource.DataSource = profileBindingSource;
             // 
             // MainForm
             // 
@@ -450,10 +466,12 @@
             Text = "Lethal Company Mod Manager";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)profileBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)profileListBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)settingsBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)settingsBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)activeModListBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -514,5 +532,7 @@
         private System.Windows.Forms.Button BtnNewProfile;
         private System.Windows.Forms.BindingSource profileBindingSource;
         private System.Windows.Forms.BindingSource settingsBindingSource;
+        private System.Windows.Forms.BindingSource profileListBindingSource;
+        private System.Windows.Forms.BindingSource activeModListBindingSource;
     }
 }

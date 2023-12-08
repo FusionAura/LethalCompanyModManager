@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace LCModLoader
 {
     public struct Settings
     {
-        public string _gameExe { get; set; }
-        public string _gameDir { get; set; }
-        public string _modDir { get; set; }
-        public string _profileDir { get; set; }
-        public List<Profile> ProfileList { get; set; }
+        public string GameExe { get; set; }
+        public string GameDir { get; set; }
+        public string ModDir { get; set; }
+        public string ProfileDir { get; set; }
+        public BindingList<Profile> ProfileList { get; set; }
     }
 }

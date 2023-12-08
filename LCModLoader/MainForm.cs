@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Forms;
@@ -42,10 +44,10 @@ public partial class MainForm : Form
     {
 
         //TODO: Open Config file and copy list data to appropriate mod lists
-        _gameExe = _settings._gameExe;
-        _gameDir = _settings._gameDir;
-        _modDir = _settings._modDir;
-        _profileDir = _settings._profileDir;
+        _gameExe = _settings.GameExe;
+        _gameDir = _settings.GameDir;
+        _modDir = _settings.ModDir;
+        _profileDir = _settings.ProfileDir;
     }
 
     private void FirstTimeBoot()
@@ -63,21 +65,11 @@ public partial class MainForm : Form
         else
             FindGameDir(game);
 
-        //Create Default Profile
-        Profile Default = new();
-        Default.ProfileName = "Default";
-        Default.ActiveModList = new();
-        ProfileList.DataSource = _settings.ProfileList;
-        //Add Profile to Combobox.
-        ProfileList.Items.Insert(0, Default);
-        ProfileList.DisplayMember = Default.ProfileName;
+        //TODO: Check if existing profiles exist
 
-
-        ProfileList.Text = Default.ProfileName;
-
-
-        //Set Current Profile
-        _currentProfile = (Profile)ProfileList.Items[0];
+        //TODO: If not, establish profile list
+        _settings.ProfileList = new();
+        CreateProfile("Default");
 
 
 
@@ -86,6 +78,25 @@ public partial class MainForm : Form
         //TODO: If BepInEx is not installed, Display prompt that it is missing.
 
 
+    }
+
+    private void CreateProfile(string Name)
+    {
+        //Create Default Profile
+        Profile newProfile = new();
+        newProfile.ProfileName = Name;
+        newProfile.ActiveModList = new();
+
+        _settings.ProfileList.Add(newProfile);
+
+        ProfileList.DataSource = _settings.ProfileList;
+
+        ProfileList.DisplayMember = newProfile.ProfileName;
+        ProfileList.SelectedItem = ProfileList.Items[0];
+
+
+        //Set Current Profile
+        _currentProfile = (Profile)ProfileList.Items[0];
     }
 
     private void FindGameDir(string game)
@@ -107,15 +118,15 @@ public partial class MainForm : Form
             {
                 if (File.Exists(Path.GetDirectoryName(folderBrowser.FileName) + @"\" + game))
                 {
-                    _settings._gameExe = Path.GetDirectoryName(folderBrowser.FileName) + @"\" + Path.GetFileName(folderBrowser.FileName);
-                    _settings._gameDir = Path.GetDirectoryName(folderBrowser.FileName);
-                    _settings._modDir = Directory.GetCurrentDirectory() + @"/Mods";
-                    _settings._profileDir = Directory.GetCurrentDirectory() + @"/Profiles";
+                    _settings.GameExe = Path.GetDirectoryName(folderBrowser.FileName) + @"\" + Path.GetFileName(folderBrowser.FileName);
+                    _settings.GameDir = Path.GetDirectoryName(folderBrowser.FileName);
+                    _settings.ModDir = Directory.GetCurrentDirectory() + @"/Mods";
+                    _settings.ProfileDir = Directory.GetCurrentDirectory() + @"/Profiles";
 
-                    _gameExe = _settings._gameExe;
-                    _gameDir = _settings._gameDir;
-                    _modDir = _settings._modDir;
-                    _profileDir = _settings._profileDir;
+                    _gameExe = _settings.GameExe;
+                    _gameDir = _settings.GameDir;
+                    _modDir = _settings.ModDir;
+                    _profileDir = _settings.ProfileDir;
                 }
                 else
                     CanNotFindGame(game);
@@ -146,14 +157,6 @@ public partial class MainForm : Form
         //TODO:Get Profile
         //TODO:Load Active Mod List
         //TODO:Load Rest of Mods
-    }
-
-    private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-    }
-
-    private void label1_Click_1(object sender, EventArgs e)
-    {
     }
 
     private void Form1_Load(object sender, EventArgs e)
@@ -211,8 +214,34 @@ public partial class MainForm : Form
     private void BtnNewProfile_Click(object sender, EventArgs e)
     {
         //TODO: Empty Active Mod List
-        //TODO: Create New Profile
+        bool result = false;
+
+        while (!result)
+        {
+            //TODO: Create New Profile
+            string UserAnswer = Microsoft.VisualBasic.Interaction.InputBox("Please enter a profile name.", "Enter a Profile Name", "New Profile");
+            if (UserAnswer.Length == 0)
+                return;
+
+            foreach (Profile a in _settings.ProfileList)
+            {
+                if (a.ProfileName == (UserAnswer))
+                {
+                    //TODO:Check to see if name is used already.
+                    var message = "This profile name is already in use. Enter a new name.";
+                    var title = "Profile Name exists";
+                    MessageBox.Show(message, title);
+                }
+                else
+                { 
+                    CreateProfile(UserAnswer);
+                    return;
+                }
+                
+            }
+        }
     }
+
 
     private void githubRepoToolStripMenuItem_Click(object sender, EventArgs e)
     {
@@ -270,4 +299,13 @@ public partial class MainForm : Form
     {
 
     }
+
+    private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+    }
+
+    private void label1_Click_1(object sender, EventArgs e)
+    {
+    }
+
 }
